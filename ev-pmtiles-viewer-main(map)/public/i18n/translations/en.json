@@ -1,0 +1,47 @@
+{
+  "sidebar": {
+    "left": {
+      "title": "EV Dashboard",
+      "subtitle": "Interactive map layers",
+      "searchMode": "Search Mode",
+      "searchForAddresses": "Search for Addresses",
+      "searchForCadastral": "Search for Cadastral",
+      "dataLayers": "Map Layers",
+      "adminBoundaries": "Administrative Boundaries",
+      "parcelsGroup": "Parcel Layers",
+      "toggleAllParcels": "Toggle All Parcels"
+    },
+    "right": {
+      "analytics": "Analytics",
+      "dataMeta": "Map data and insights",
+      "closeSidebar": "Close sidebar",
+      "apiStatus": "API Status",
+      "databaseStatus": "Database Status",
+      "tools": "Tools",
+      "detailedStatsTitle": "Detailed Statistics",
+      "export": "Export",
+      "exportToPdf": "Export to PDF",
+      "toggleFullscreen": "Toggle Fullscreen",
+      "loadingApiStatus": "Loading API status...",
+      "loadingDetailedStats": "Loading detailed statistics...",
+      "checkingApiStatus": "Checking API status...",
+      "checkingDatabaseStatus": "Checking database status...",
+      "apiStatusOk": "✓ API Status: OK",
+      "apiStatusError": "✗ API Status: Error",
+      "apiStatusUnknown": "⚠ API Status: Unknown",
+      "databaseStatusHealthy": "✓ Database Status: Healthy",
+      "databaseStatusDegraded": "⚠ Database Status: Degraded",
+      "databaseStatusError": "✗ Database Status: Error",
+      "apiResponding": "API is responding correctly",
+      "failedToConnect": "Failed to connect",
+      "unexpectedResponse": "Unexpected response",
+      "someDatabaseConnectionsFailing": "Some database connections are failing",
+      "unknownDatabaseError": "Unknown database error",
+      "maplibre": "MapLibre GL JS",
+      "copyright": "EV Dashboard"
+    }
+  },
+  "map": {
+    "title": "PMTiles Map"
+  }
+}

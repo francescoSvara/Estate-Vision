@@ -1,0 +1,100 @@
+/**
+ * Global Button Component Styles
+ * Provides consistent button styling across the application
+ */
+
+/* Base button styles */
+button {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--bg-current-line);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  user-select: none;
+  outline: none;
+  height: 40px;
+}
+
+/* Enabled (not active) state */
+button:enabled {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--bg-current-line);
+}
+
+/* Enabled hover state */
+button:enabled:hover {
+  background-color: var(--bg-current-line);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+/* Enabled active (pressed) state */
+button:enabled:active {
+  background-color: var(--color-purple);
+  color: var(--text-primary);
+  border-color: var(--color-purple);
+  transform: translateY(0);
+}
+
+/* Enabled and active state (using class for persistent active state) */
+button.active {
+  color: var(--color-green);
+  font-weight: 900;
+}
+
+/* Enabled and active hover state */
+button.active:hover {
+  transform: translateY(-1px);
+}
+
+/* Disabled state */
+button:disabled {
+  background-color: var(--bg-primary);
+  color: var(--text-comment);
+  border-color: var(--bg-current-line);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Icon-only button variant */
+button.icon-only {
+  width: 32px;
+  height: 32px;
+  padding: 0.3rem;
+}
+
+/* Small button variant */
+button.small {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+button.icon-only.small {
+  width: 28px;
+  height: 28px;
+}
+
+/* Large button variant */
+button.large {
+  padding: 1rem 1.5rem;
+  font-size: 1.125rem;
+}
+
+button.icon-only.large {
+  width: 40px;
+  height: 40px;
+}
+
+/* Left-aligned button variant */
+button.btn-left {
+  justify-content: flex-start;
+  text-align: left;
+}

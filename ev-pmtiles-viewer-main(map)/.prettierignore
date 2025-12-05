@@ -1,0 +1,7 @@
+dist
+node_modules
+*.min.js
+public
+test-results
+playwright-report
+.playwright

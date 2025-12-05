@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+/* Dark Theme Color Palette */
+:root {
+  --bg-primary: #282a36;
+  --bg-secondary: #0e0d11;
+  --bg-current-line: #6272a4;
+  --text-primary: #f8f8f2;
+  --text-comment: #6272a4;
+  --color-red: #ff5555;
+  --color-orange: #ffb86c;
+  --color-yellow: #f1fa8c;
+  --color-green: #66f859;
+  --color-cyan: #8be9fd;
+  --color-purple: #bd93f9;
+  --color-pink: #ff79c6;
+
+  /* Additional theme variables */
+  --accent-hover: #a569e1;
+  --border-radius: 3px;
+}
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Play', sans-serif;
+  font-size: medium;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+label {
+  color: var(--text-primary);
+  font-family: 'Play', sans-serif;
+  font-size: medium;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+h3 {
+  font-weight: 300;
+}
+
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+label {
+  font-weight: 100;
+}
+
+/* Global layout styles */
+#app {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Map container styles */
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex: 1;
+}
+
+/* Hide MapLibre GL attribution control */
+.maplibregl-ctrl-attrib {
+  display: none !important;
+}
+
+.maplibregl-popup {
+  color: #0e0d11;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+::-moz-selection {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-current-line);
+  border-radius: var(--border-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-purple);
+}
+
+/* Utility classes for dark theme */
+.text-primary {
+  color: var(--text-primary);
+}
+.text-comment {
+  color: var(--text-comment);
+}
+.text-red {
+  color: var(--color-red);
+}
+.text-orange {
+  color: var(--color-orange);
+}
+.text-yellow {
+  color: var(--color-yellow);
+}
+.text-green {
+  color: var(--color-green);
+}
+.text-cyan {
+  color: var(--color-cyan);
+}
+.text-purple {
+  color: var(--color-purple);
+}
+.text-pink {
+  color: var(--color-pink);
+}
+
+.bg-primary {
+  background-color: var(--bg-primary);
+}
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+.bg-current-line {
+  background-color: var(--bg-current-line);
+}
+
+/* Screen reader only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

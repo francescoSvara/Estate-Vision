@@ -1,0 +1,43 @@
+{
+  "sidebar": {
+    "left": {
+      "title": "EV Dashboard",
+      "subtitle": "Interactive map layers",
+      "dataLayers": "Map Layers",
+      "adminBoundaries": "Administrative Boundaries"
+    },
+    "right": {
+      "analytics": "Analytics",
+      "dataMeta": "Map data and insights",
+      "closeSidebar": "Close sidebar",
+      "apiStatus": "API Status",
+      "databaseStatus": "Database Status",
+      "tools": "Tools",
+      "selectedParcels": "Selected Parcels",
+      "detailedStatsTitle": "Detailed Statistics",
+      "export": "Export",
+      "exportToPdf": "Export to PDF",
+      "toggleFullscreen": "Toggle Fullscreen",
+      "loadingApiStatus": "Loading API status...",
+      "loadingDetailedStats": "Loading detailed statistics...",
+      "checkingApiStatus": "Checking API status...",
+      "checkingDatabaseStatus": "Checking database status...",
+      "apiStatusOk": "✓ API Status: OK",
+      "apiStatusError": "✗ API Status: Error",
+      "apiStatusUnknown": "⚠ API Status: Unknown",
+      "databaseStatusHealthy": "✓ Database Status: Healthy",
+      "databaseStatusDegraded": "⚠ Database Status: Degraded",
+      "databaseStatusError": "✗ Database Status: Error",
+      "apiResponding": "API is responding correctly",
+      "failedToConnect": "Failed to connect",
+      "unexpectedResponse": "Unexpected response",
+      "someDatabaseConnectionsFailing": "Some database connections are failing",
+      "unknownDatabaseError": "Unknown database error",
+      "maplibre": "MapLibre GL JS",
+      "copyright": "© 2025 EV Dashboard"
+    }
+  },
+  "map": {
+    "title": "PMTiles Map"
+  }
+}
