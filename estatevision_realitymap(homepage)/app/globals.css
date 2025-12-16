@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+:root {
+  --background: #030305;
+  --foreground: #e2e2e2;
+  --accent-primary: #8b5cf6; /* Violet/Neodymium */
+  --accent-secondary: #3b82f6; /* Cobalt Blue */
+  --accent-tertiary: #64748b; /* Tungsten/Slate */
+  --scan-color: rgba(59, 130, 246, 0.5);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom utilities for the "tech" feel */
+.text-glow {
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.border-fade {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bg-grid {
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* 3D & Perspective */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.rotate-x-60 {
+  transform: rotateX(60deg);
+}
+
+/* Animations */
+@keyframes scan {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+.animate-scan {
+  background: linear-gradient(to bottom, transparent 50%, var(--scan-color) 51%, transparent 51%);
+  background-size: 100% 200%;
+  animation: scan 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes radar-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-spin {
+  animation: radar-spin 4s linear infinite;
+}
+
+@keyframes ping-slow {
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.animate-ping-slow {
+    animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Data Stream Animation */
+@keyframes stream-flow {
+    0% { stroke-dashoffset: 1000; }
+    100% { stroke-dashoffset: 0; }
+}
+
+.animate-stream {
+    stroke-dasharray: 20 10;
+    animation: stream-flow 20s linear infinite;
+}
+
+/* Tech borders */
+.corner-border {
+    position: relative;
+}
+.corner-border::before, .corner-border::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: rgba(59, 130, 246, 0.5);
+    border-style: solid;
+    transition: all 0.3s ease;
+}
+.corner-border::before {
+    top: 0;
+    left: 0;
+    border-width: 1px 0 0 1px;
+}
+.corner-border::after {
+    bottom: 0;
+    right: 0;
+    border-width: 0 1px 1px 0;
+}
+.corner-border:hover::before, .corner-border:hover::after {
+    width: 100%;
+    height: 100%;
+    border-color: rgba(59, 130, 246, 0.8);
+}
+
+/* Holo Glow */
+.holo-glow {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.1), inset 0 0 30px rgba(59, 130, 246, 0.1);
+}
