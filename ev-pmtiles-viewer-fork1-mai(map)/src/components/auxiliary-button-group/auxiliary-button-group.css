@@ -1,0 +1,39 @@
+/* Button Group Top Right Component Styles */
+
+.button-group-topright {
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+/* Button group items - reset positioning */
+.button-group-topright .button-group-item {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  left: auto !important;
+  bottom: auto !important;
+  margin: 0;
+}
+
+/* Animation for button group appearance */
+.button-group-topright.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .button-group-topright {
+    gap: 6px;
+  }
+}

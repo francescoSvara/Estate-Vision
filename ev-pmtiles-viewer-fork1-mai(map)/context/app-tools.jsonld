@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareApplication",
+  "@id": "./app-tools.jsonld",
+  "name": "PMTiles Viewer AppTools",
+  "description": "Interactive geospatial web application for Italian cadastral parcels visualization with MapLibre GL JS, PMTiles, and multi-component search functionality",
+  "dateCreated": "2025-11-06",
+  "dateModified": "2025-12-07T00:00:00Z",
+  "applicationCategory": "DeveloperApplication",
+  "instruments": {
+    "pmtilesSources": "./tools/pmtiles.jsonld",
+    "baseMap": "./tools/carto-voyager.jsonld",
+    "backend": "./tools/app-api-integration.jsonld"
+  },
+  "potentialAction": [
+    "./tools/app-initialize-map.jsonld",
+    "./tools/app-layer-management.jsonld",
+    "./tools/app-api-integration.jsonld",
+    "./tools/app-search-components.jsonld",
+    "./tools/app-popup-system.jsonld",
+    "./tools/app-ui-services.jsonld",
+    "./tools/maplibre-gl.jsonld",
+    "./tools/carto-voyager.jsonld",
+    "./tools/pmtiles.jsonld",
+    "./tools/custom-components.jsonld",
+    "./tools/css-custom-properties.jsonld",
+    "./tools/lucide.jsonld",
+    "./tools/custom-i18n.jsonld",
+    "./tools/tabulator.jsonld",
+    "./tools/vite.jsonld"
+  ]
+}

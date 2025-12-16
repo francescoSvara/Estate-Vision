@@ -1,0 +1,469 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareApplication",
+  "name": "PMTiles Viewer Development Tools",
+  "description": "Development, testing, security, and deployment tools for PMTiles Viewer application",
+  "dateCreated": "2025-11-07T00:00:00Z",
+  "dateModified": "2025-12-06T00:00:00Z",
+  "applicationCategory": "DeveloperApplication",
+  "context7MCP": {
+    "purpose": "Retrieve latest stable documentation from external library sources",
+    "note": "Context7 fetches current official docs that may differ from AI training data. Always use for external dependencies to ensure accuracy.",
+    "whenToUse": [
+      "Before implementing features with external dependencies (MapLibre GL JS, PMTiles, Vite, etc.)",
+      "When API signatures or library behavior may have changed since training data",
+      "To verify current best practices for third-party integrations",
+      "When troubleshooting external library usage",
+      "To check if current library versions support specific features",
+      "To find breaking changes or migration guides"
+    ],
+    "workflow": {
+      "step_1": {
+        "tool": "mcp_upstash_conte_resolve-library-id",
+        "input": "library_name (e.g., 'maplibre-gl', 'pmtiles')",
+        "output": "context7_id (e.g., '/maplibre/maplibre-gl-js')"
+      },
+      "step_2": {
+        "tool": "mcp_upstash_conte_get-library-docs",
+        "input": "context7_id + optional topic",
+        "output": "current documentation and code examples"
+      }
+    },
+    "doNotUseFor": [
+      "Project-specific code (use semantic_search, read_file, grep_search)",
+      "Internal APIs or services",
+      "Custom components in src/components/"
+    ]
+  },
+  "potentialAction": [
+    {
+      "@type": "Action",
+      "name": "Development Server",
+      "identifier": "dev",
+      "description": "Start Vite development server with hot module replacement",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run dev"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Development server running on localhost:5173"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Build",
+      "identifier": "build",
+      "description": "Build production assets with Vite",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run build"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Production-ready build in dist/ directory"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Preview",
+      "identifier": "preview",
+      "description": "Preview production build locally",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run preview"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Local preview server with production build"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Lint",
+      "identifier": "lint",
+      "description": "Run ESLint code quality checks on src/ directory",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run lint"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Code quality report with errors and warnings"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Lint Fix",
+      "identifier": "lint:fix",
+      "description": "Auto-fix ESLint code quality issues",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run lint:fix"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Automatically fixed code quality issues"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Format",
+      "identifier": "format",
+      "description": "Format code using Prettier",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run format"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Formatted code files in src/ directory"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Format Check",
+      "identifier": "format:check",
+      "description": "Check code formatting without modifying files",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run format:check"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Formatting validation report"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Basic Check",
+      "identifier": "check",
+      "description": "Run lint and format checks",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run check"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Combined lint and format validation report"
+      },
+      "instrument": [
+        {
+          "@type": "PropertyValue",
+          "name": "checks",
+          "value": [
+            "ESLint code quality",
+            "Prettier format validation"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "Full Check",
+      "identifier": "check:full",
+      "description": "Run all checks: lint, format, security",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run check:full"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Comprehensive validation report"
+      },
+      "instrument": [
+        {
+          "@type": "PropertyValue",
+          "name": "checks",
+          "value": [
+            "ESLint code quality",
+            "Prettier format validation",
+            "Security scan"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "Security Check",
+      "identifier": "security:check",
+      "description": "Run security scan for hardcoded secrets and vulnerable dependencies",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run security:check",
+        "actionApplication": {
+          "@type": "SoftwareSourceCode",
+          "codeRepository": "./scripts/local-security-check.js"
+        }
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Security report with errors and warnings"
+      },
+      "instrument": [
+        {
+          "@type": "PropertyValue",
+          "name": "checks",
+          "value": [
+            "Hardcoded secrets detection",
+            "Dependency vulnerability scan",
+            "ESLint validation",
+            "Wildcard version detection"
+          ]
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "scanPaths",
+          "value": [
+            "src/",
+            "scripts/",
+            ".github/",
+            ".vscode/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "Security Audit",
+      "identifier": "security:audit",
+      "description": "Run npm audit for dependency vulnerabilities only",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run security:audit"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "NPM audit report with moderate+ vulnerabilities"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Accessibility Check",
+      "identifier": "a11y:check",
+      "description": "Run WCAG 2.1 AA accessibility compliance checks",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run a11y:check",
+        "actionApplication": {
+          "@type": "SoftwareSourceCode",
+          "codeRepository": "./scripts/accessibility-check.js"
+        }
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Accessibility compliance report"
+      },
+      "instrument": [
+        {
+          "@type": "PropertyValue",
+          "name": "checks",
+          "value": [
+            "HTML semantics (lang, title, meta)",
+            "ARIA attributes usage",
+            "Color contrast patterns",
+            "Keyboard navigation support"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "E2E Tests",
+      "identifier": "test:e2e",
+      "description": "Run Playwright end-to-end tests in headless mode",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run test:e2e"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "E2E test results and coverage report"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "E2E Tests Headed",
+      "identifier": "test:e2e:headed",
+      "description": "Run Playwright tests with visible browser",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run test:e2e:headed"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "E2E test results with browser UI visible"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "E2E Tests UI Mode",
+      "identifier": "test:e2e:ui",
+      "description": "Open Playwright UI mode for interactive testing",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run test:e2e:ui"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Interactive Playwright UI for test development"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "E2E Tests Debug",
+      "identifier": "test:e2e:debug",
+      "description": "Run Playwright tests in debug mode",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run test:e2e:debug"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Playwright Inspector for step-by-step debugging"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "E2E Tests Check",
+      "identifier": "test:e2e:check",
+      "description": "Run E2E tests with detailed reporting",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run test:e2e:check",
+        "actionApplication": {
+          "@type": "SoftwareSourceCode",
+          "codeRepository": "./scripts/e2e-test-check.js"
+        }
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Comprehensive E2E test report"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "E2E Production Verify",
+      "identifier": "test:e2e:production",
+      "description": "Verify production deployment with E2E tests",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run test:e2e:production",
+        "actionApplication": {
+          "@type": "SoftwareSourceCode",
+          "codeRepository": "./scripts/e2e-production-verify.js"
+        }
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Production deployment verification report"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Test Report",
+      "identifier": "test:report",
+      "description": "View last Playwright test report",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run test:report"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "HTML test report in browser"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Sync to Production",
+      "identifier": "sync",
+      "description": "Synchronize build artifacts to production server",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run sync",
+        "actionApplication": {
+          "@type": "SoftwareSourceCode",
+          "codeRepository": "./scripts/sync-to-production.js"
+        }
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Files synchronized to production server"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Verify Deployment",
+      "identifier": "verify",
+      "description": "Verify deployment success and availability",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run verify",
+        "actionApplication": {
+          "@type": "SoftwareSourceCode",
+          "codeRepository": "./scripts/verify-deployment.js"
+        }
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Deployment verification report"
+      }
+    },
+    {
+      "@type": "Action",
+      "name": "Pre-Deploy Quick",
+      "identifier": "predeploy:quick",
+      "description": "Run all checks and build before deployment",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run predeploy:quick"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Pre-deployment validation and build artifacts"
+      },
+      "instrument": [
+        {
+          "@type": "PropertyValue",
+          "name": "steps",
+          "value": [
+            "Full check (lint + format + security)",
+            "Accessibility validation",
+            "Production build"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Action",
+      "name": "Deploy Quick",
+      "identifier": "deploy:quick",
+      "description": "Full deployment pipeline: sync and verify",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "npm run deploy:quick"
+      },
+      "result": {
+        "@type": "Action",
+        "description": "Deployment complete with verification"
+      },
+      "instrument": [
+        {
+          "@type": "PropertyValue",
+          "name": "steps",
+          "value": [
+            "Sync to production server",
+            "Deployment verification"
+          ]
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "prerequisites",
+          "value": [
+            "Must run predeploy:quick first"
+          ]
+        }
+      ]
+    }
+  ]
+}

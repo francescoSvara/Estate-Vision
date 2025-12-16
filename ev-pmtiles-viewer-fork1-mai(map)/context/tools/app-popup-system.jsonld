@@ -1,0 +1,51 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Action",
+  "@id": "#app:popup-system",
+  "name": "Map Popup Content System",
+  "identifier": "popup-system",
+  "description": "Dynamic popup content generation for map feature interactions with layer intersection support",
+  "target": {
+    "@type": "EntryPoint",
+    "urlTemplate": "./src/components/popup/",
+    "actionApplication": {
+      "@type": "SoftwareSourceCode",
+      "programmingLanguage": "JavaScript"
+    },
+    "example": [
+      {
+        "@type": "HowToDirection",
+        "text": "import { PopupContentManager } from './components/popup/index.js';"
+      }
+    ]
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "popupFeatures",
+      "value": [
+        "Dynamic content based on clicked features",
+        "Layer intersection analysis",
+        "Parcel highlighting on selection",
+        "Details button for sidebar integration",
+        "Multi-layer feature aggregation"
+      ]
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "components",
+      "value": [
+        {
+          "component": "PopupContentManager",
+          "path": "./src/components/popup/popup-content-manager.js",
+          "functionality": "Manages popup content generation and layer queries"
+        },
+        {
+          "component": "PopupStyles",
+          "path": "./src/components/popup/popup.css",
+          "functionality": "Popup styling and responsive design"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,565 @@
+/**
+ * Zone Analytics View Styles - Futuristic Enterprise
+ * Distinct from Asset Details - More data-heavy, grid-like
+ */
+
+.zone-analytics-view {
+  width: 100%;
+  min-height: 100%; /* Allow content to stretch */
+  background: radial-gradient(circle at bottom left, #0a0b10 0%, #050508 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  /* overflow-y: auto; handled by container now */
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Header */
+.zone-analytics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.zone-title-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.zone-title-group h2 {
+  font-size: 2.2rem;
+  color: var(--color-primary);
+  text-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+  margin: 0;
+}
+
+.zone-badge {
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Header Actions Group */
+.zone-header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Report Button */
+.zone-report-btn {
+  background: rgba(0, 255, 157, 0.1);
+  border: 1px solid var(--color-success);
+  color: var(--color-success);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.zone-report-btn:hover {
+  background: rgba(0, 255, 157, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.3);
+}
+
+/* Back Button (Reused style but positioned differently) */
+.zone-back-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.zone-back-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Dashboard Grid */
+.zone-dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto 1fr;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+/* KPI Cards */
+.kpi-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: var(--color-primary);
+  opacity: 0.5;
+}
+
+.kpi-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.kpi-value {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.kpi-trend {
+  font-size: 0.8rem;
+  color: #4caf50; /* Green for positive */
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Charts Section */
+.zone-chart-container {
+  grid-column: span 2;
+  background: rgba(15, 17, 26, 0.6);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  min-height: 300px;
+  position: relative;
+}
+
+.zone-chart-container h3 {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Map Preview in Dashboard */
+.zone-map-preview {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: #000;
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+#zone-mini-map {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.zone-map-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  padding: 2rem 1.5rem 1.5rem;
+  pointer-events: none;
+}
+
+.overlay-stat {
+  display: inline-block;
+  margin-right: 1.5rem;
+}
+
+.overlay-stat span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.overlay-stat strong {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+
+/* Table / List */
+.zone-details-table {
+  grid-column: span 4;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
+.zone-details-table h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.data-grid-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.data-grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  color: var(--text-muted);
+  transition: background 0.2s;
+}
+
+.data-grid-row:hover {
+  background: rgba(0, 243, 255, 0.05);
+  color: #fff;
+}
+
+/* Print Report Header/Footer (Hidden on screen) */
+.print-report-header,
+.print-report-footer {
+  display: none;
+}
+
+/* Print Styles for Zone Analytics */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 20mm 15mm;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .zone-analytics-view,
+  .zone-analytics-view * {
+    visibility: visible;
+  }
+
+  .zone-analytics-view {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: white !important;
+    color: #000 !important;
+    min-height: auto;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Show Report Header */
+  .print-report-header {
+    display: block !important;
+    padding: 20px;
+    border-bottom: 3px solid #00f3ff;
+    margin-bottom: 30px;
+    page-break-after: avoid;
+  }
+
+  .report-logo img {
+    height: 40px;
+    margin-bottom: 15px;
+    filter: brightness(0);
+  }
+
+  .report-meta h1 {
+    color: #000 !important;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+    font-weight: 700;
+  }
+
+  .report-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .report-info-item {
+    display: flex;
+    gap: 10px;
+    font-size: 11px;
+  }
+
+  .report-info-item .label {
+    font-weight: 600;
+    color: #555 !important;
+  }
+
+  .report-info-item .value {
+    color: #000 !important;
+  }
+
+  .report-classification {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #f0f0f0;
+    padding: 5px 15px;
+    border: 2px solid #00f3ff;
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  /* Show Report Footer */
+  .print-report-footer {
+    display: block !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    border-top: 1px solid #ccc;
+    background: #f9f9f9;
+    font-size: 9px;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    color: #666 !important;
+  }
+
+  .footer-left p,
+  .footer-right p {
+    margin: 0;
+    color: #666 !important;
+  }
+
+  /* Hide UI elements */
+  .zone-analytics-header,
+  .zone-back-btn,
+  .zone-report-btn,
+  .zone-header-actions {
+    display: none !important;
+  }
+
+  /* Reset colors for print */
+  h2, h3, h4, p, span, div {
+    color: #000 !important;
+    text-shadow: none !important;
+  }
+
+  /* Dashboard Layout */
+  .zone-dashboard {
+    padding: 20px;
+    display: block;
+  }
+
+  /* KPI Cards */
+  .kpi-card {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    margin-bottom: 15px;
+    display: inline-block;
+    width: 48%;
+    margin-right: 2%;
+    vertical-align: top;
+  }
+
+  .kpi-card:nth-child(2n) {
+    margin-right: 0;
+  }
+
+  .kpi-label {
+    color: #555 !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .kpi-value {
+    color: #000 !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .kpi-trend {
+    color: #666 !important;
+    font-size: 10px !important;
+    display: block;
+  }
+
+  /* Zone Map Preview */
+  .zone-map-preview {
+    width: 100%;
+    height: 300px !important;
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    margin: 20px 0;
+    page-break-inside: avoid;
+    position: relative;
+  }
+
+  #zone-mini-map {
+    height: 100% !important;
+  }
+
+  .zone-map-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.9) !important;
+    padding: 10px;
+    border: 1px solid #ddd !important;
+    border-radius: 4px;
+    font-size: 10px !important;
+  }
+
+  .overlay-stat {
+    color: #000 !important;
+  }
+
+  .overlay-stat span {
+    color: #555 !important;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  .overlay-stat strong {
+    color: #000 !important;
+    font-size: 11px !important;
+  }
+
+  /* Chart Container */
+  .zone-chart-container {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    margin: 20px 0;
+    page-break-inside: avoid;
+  }
+
+  .zone-chart-container h3 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    margin: 0 0 15px 0 !important;
+    padding-bottom: 8px !important;
+    border-bottom: 2px solid #00f3ff !important;
+  }
+
+  /* Data Table */
+  .zone-details-table {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    margin: 20px 0;
+    page-break-before: auto;
+    page-break-inside: auto;
+  }
+
+  .zone-details-table h3 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    margin: 0 0 15px 0 !important;
+    padding-bottom: 8px !important;
+    border-bottom: 2px solid #00f3ff !important;
+  }
+
+  .data-grid-header {
+    background: #f0f0f0 !important;
+    border: 1px solid #ddd !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+  }
+
+  .data-grid-header div {
+    color: #000 !important;
+  }
+
+  .data-grid-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    padding: 10px !important;
+    border-bottom: 1px dotted #e0e0e0 !important;
+    font-size: 10px !important;
+  }
+
+  .data-grid-row:last-child {
+    border-bottom: none !important;
+  }
+
+  #zone-table-body {
+    max-height: none !important;
+  }
+
+  /* Page breaks */
+  .kpi-card:nth-child(4) {
+    page-break-after: avoid;
+  }
+
+  .zone-map-preview {
+    page-break-after: auto;
+  }
+
+  .zone-chart-container {
+    page-break-after: auto;
+  }
+}
+

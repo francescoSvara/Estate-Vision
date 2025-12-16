@@ -1,0 +1,33 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareApplication",
+  "@id": "./lucide.jsonld",
+  "name": "Lucide Icons",
+  "description": "Lightweight and customizable icon library",
+  "applicationCategory": "Icon Library",
+  "isAccessibleForFree": true,
+  "url": "https://lucide.dev/",
+  "featureList": [
+    "SVG-based icons for UI components",
+    "Lightweight package size with tree-shaking",
+    "Consistent design language",
+    "Easy customization with createIcons()",
+    "Used for: PanelRightOpen, PanelRightClose, Info, Home, ZoomIn, ZoomOut icons"
+  ],
+  "usage": "icons",
+  "implementation": {
+    "components": [
+      "./src/components/toggle-button/toggle-button.js",
+      "./src/components/modal-button/modal-button.js",
+      "./src/main.js"
+    ],
+    "icons_used": [
+      "PanelRightOpen",
+      "PanelRightClose", 
+      "Info",
+      "Home",
+      "ZoomIn",
+      "ZoomOut"
+    ]
+  }
+}

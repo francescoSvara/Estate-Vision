@@ -1,0 +1,34 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Action",
+  "@id": "#app:layer-management",
+  "name": "Manage Map Layers",
+  "identifier": "layer-management",
+  "description": "Configure and control map layers including PMTiles vector tiles",
+  "instrument": {
+    "@type": "SoftwareApplication",
+    "identifier": "maplibre-gl"
+  },
+  "target": {
+    "@type": "EntryPoint",
+    "urlTemplate": "./src/components/layers/",
+    "example": [
+      {
+        "@type": "HowToDirection",
+        "text": "Toggle layer visibility via layer controls"
+      }
+    ]
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "layerTypes",
+      "value": [
+        "Base layer (OpenStreetMap)",
+        "PMTiles vector layers (parcels)",
+        "Inventario assets layer",
+        "Custom overlay layers"
+      ]
+    }
+  ]
+}

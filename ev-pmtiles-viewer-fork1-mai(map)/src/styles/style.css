@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+/* Futuristic Enterprise Theme */
+:root {
+  /* Core Backgrounds - Deep Space / Void */
+  --bg-primary: #050508;
+  --bg-secondary: #0a0b10;
+  --bg-tertiary: #13151f;
+  
+  /* Glassmorphism Surface */
+  --glass-bg: rgba(13, 14, 22, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-blur: blur(12px);
+
+  /* Accents - Cyberpunk / Data */
+  --color-primary: #00f3ff; /* Electric Cyan */
+  --color-primary-dim: rgba(0, 243, 255, 0.15);
+  --color-primary-glow: 0 0 10px rgba(0, 243, 255, 0.5);
+  
+  --color-secondary: #7000ff; /* Electric Purple */
+  --color-secondary-dim: rgba(112, 0, 255, 0.15);
+  
+  --color-success: #00ff9d; /* Neon Green */
+  --color-warning: #ffb800; /* Amber */
+  --color-danger: #ff0055; /* Neon Red */
+  
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #a0aab5;
+  --text-muted: #5c677d;
+  
+  /* UI Elements */
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Rajdhani', 'Play', sans-serif; /* Tech-oriented fonts */
+  font-size: 16px;
+  overflow: hidden; /* App-like feel */
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+p, label, input, button, select, textarea {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Scrollbar - Minimalist */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: var(--border-radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* App Structure */
+#app {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at center, #0f111a 0%, #050508 100%);
+}
+
+.main-content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-content main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Map Container Defaults */
+#map {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Utility Classes */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.btn-enterprise {
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 0.5rem 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-enterprise:hover {
+  background: var(--color-primary-dim);
+  box-shadow: var(--color-primary-glow);
+  text-shadow: 0 0 8px var(--color-primary);
+}
+
+.btn-enterprise:active {
+  transform: scale(0.98);
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+}
+
+/* Hide default map controls that clash */
+.maplibregl-ctrl-top-right,
+.maplibregl-ctrl-top-left,
+.maplibregl-ctrl-bottom-right,
+.maplibregl-ctrl-bottom-left {
+  z-index: 10;
+}
+
+.maplibregl-ctrl-attrib {
+  display: none !important;
+}

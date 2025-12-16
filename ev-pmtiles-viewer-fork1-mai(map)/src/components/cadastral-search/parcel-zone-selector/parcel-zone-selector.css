@@ -1,0 +1,106 @@
+/**
+ * Parcel Zone Selector Component Styles
+ */
+
+.parcel-zone-selector {
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: var(--border-radius);
+  background-color: #fafafa;
+  transition:
+    opacity 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.parcel-zone-selector.disabled {
+  opacity: 0.6;
+  background-color: #f5f5f5;
+}
+
+.parcel-zone-selector .selector-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+}
+
+.parcel-zone-selector .label-text {
+  color: #2c3e50;
+}
+
+.parcel-zone-selector .parcel-zone-count {
+  background-color: #e67e22;
+  color: white;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: var(--border-radius);
+  min-width: 24px;
+  text-align: center;
+}
+
+.parcel-zone-selector.disabled .parcel-zone-count {
+  background-color: #95a5a6;
+}
+
+.parcel-zone-selector.disabled .label-text {
+  color: #999;
+}
+
+/* Loading state styling */
+.parcel-zone-selector .parcel-zone-count:has-text('...') {
+  background-color: #3498db;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .parcel-zone-selector {
+    background-color: #2c2c2c;
+    border-color: #444;
+  }
+
+  .parcel-zone-selector.disabled {
+    background-color: #2a2a2a;
+  }
+
+  .parcel-zone-selector .label-text {
+    color: #e0e0e0;
+  }
+
+  .parcel-zone-selector.disabled .label-text {
+    color: #666;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .parcel-zone-selector {
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+
+  .parcel-zone-selector .parcel-zone-count {
+    padding: 1px 6px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .parcel-zone-selector {
+    border-color: #000;
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareApplication",
+  "@id": "./pmtiles.jsonld",
+  "name": "PMTiles",
+  "description": "Single-file archive format for pyramids of tiled data",
+  "applicationCategory": "JavaScript Library",
+  "softwareVersion": "4.3.0+",
+  "isAccessibleForFree": true,
+  "url": "https://github.com/protomaps/PMTiles",
+  "featureList": [
+    "Cloud-optimized tile archives",
+    "Range request support",
+    "No tile server required",
+    "MapLibre GL integration",
+    "Efficient vector tile delivery"
+  ],
+  "usage": "vectorData",
+  "pmtilesSources": {
+    "location": "storage.googleapis.com/space-neural-02/tiles/pmtiles/",
+    "naming": "pg_parcels_251001_m{00-10|99}.pmtile",
+    "count": 12,
+    "access": "Public read via HTTPS, CORS configured"
+  },
+  "corsConfiguration": {
+    "problem": "Google Cloud Storage bucket doesn't allow CORS requests from domain",
+    "solutions": [
+      {
+        "approach": "Configure CORS on Google Cloud Storage (recommended)",
+        "steps": [
+          "Create cors.json with origin and methods configuration",
+          "Apply: gsutil cors set cors.json gs://space-neural-02"
+        ],
+        "corsConfig": {
+          "origin": ["https://vm-neural-01.duckdns.org"],
+          "method": ["GET", "HEAD"],
+          "responseHeader": ["Content-Type", "Access-Control-Allow-Origin"],
+          "maxAgeSeconds": 3600
+        }
+      },
+      {
+        "approach": "Proxy solution via nginx",
+        "location": "/pmtiles-proxy/",
+        "proxyPass": "https://storage.googleapis.com/space-neural-02/tiles/pmtiles/",
+        "headers": ["Access-Control-Allow-Origin", "Access-Control-Allow-Methods"],
+        "usage": "https://vm-neural-01.duckdns.org/pmtiles-proxy/ca_pg_com01012025_wgs84.pmtiles"
+      },
+      {
+        "approach": "Local PMTiles server",
+        "command": "pmtiles serve your-file.pmtiles --cors --port 8080",
+        "usage": "http://localhost:8080/your-file.pmtiles"
+      }
+    ]
+  },
+  "implementation": {
+    "features": [
+      "Better error handling for CORS issues",
+      "Detailed logging of PMTiles metadata",
+      "Automatic detection of source-layer names",
+      "Fallback messaging when CORS fails"
+    ]
+  }
+}

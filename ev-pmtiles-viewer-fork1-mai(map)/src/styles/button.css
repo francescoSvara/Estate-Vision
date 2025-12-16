@@ -1,0 +1,132 @@
+/**
+ * Global Button Component Styles - Futuristic Enterprise
+ */
+
+/* Base button styles */
+button {
+  padding: 0.75rem 1.25rem;
+  background: rgba(10, 11, 16, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid var(--glass-border);
+  border-radius: 2px; /* Sharp technical look */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  outline: none;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Enabled (not active) state */
+button:enabled:hover {
+  background: rgba(0, 243, 255, 0.1);
+  border-color: var(--color-primary);
+  color: var(--text-primary);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+  text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Enabled active (pressed) state */
+button:enabled:active {
+  background: var(--color-primary);
+  color: #000;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+  transform: translateY(0);
+}
+
+/* Active Class (Toggle State) */
+button.active {
+  background: rgba(0, 243, 255, 0.15);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.1);
+}
+
+button.active:hover {
+  background: rgba(0, 243, 255, 0.25);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+/* Disabled state */
+button:disabled {
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--text-muted);
+  border-color: transparent;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Icon-only button variant (Map Controls) */
+button.icon-only {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: rgba(10, 11, 16, 0.85);
+  border: 1px solid var(--glass-border);
+}
+
+button.icon-only:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+button.icon-only svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Small button variant */
+button.small {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  height: 32px;
+}
+
+button.icon-only.small {
+  width: 32px;
+  height: 32px;
+}
+
+/* Large button variant */
+button.large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  height: 48px;
+}
+
+button.icon-only.large {
+  width: 48px;
+  height: 48px;
+}
+
+/* Primary Action Button Variant */
+button.btn-primary {
+  background: rgba(0, 243, 255, 0.1);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+button.btn-primary:hover {
+  background: var(--color-primary);
+  color: #000;
+}
+
+/* Left-aligned button variant */
+button.btn-left {
+  justify-content: flex-start;
+  text-align: left;
+}

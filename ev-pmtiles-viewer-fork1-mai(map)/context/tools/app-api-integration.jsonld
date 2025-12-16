@@ -1,0 +1,108 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Action",
+  "@id": "#app:api-integration",
+  "name": "API Service Integration",
+  "identifier": "api-integration",
+  "description": "Integrate with EV API for municipality, parcel, and address data",
+  "instrument": {
+    "@type": "SoftwareApplication",
+    "identifier": "fetch-api",
+    "name": "EV API Backend",
+    "url": "https://vm-neural-01.duckdns.org/ev-api/",
+    "description": "Backend API for municipalities, parcels, addresses, inventory data",
+    "authentication": "X-API-Key header",
+    "environmentVariables": {
+      "VITE_X_API_URL": {
+        "description": "Base URL for the EV API backend",
+        "example": "https://vm-neural-01.duckdns.org/ev-api"
+      },
+      "VITE_X_API_KEY": {
+        "description": "API key for authentication",
+        "required": true
+      }
+    }
+  },
+  "errorCodes": {
+    "API_UNAUTHORIZED_401": {
+      "code": 1,
+      "action": "verify_api_key"
+    },
+    "API_NOT_FOUND_404": {
+      "code": 2,
+      "action": "check_endpoint_path"
+    },
+    "API_SERVER_ERROR_500": {
+      "code": 3,
+      "action": "check_backend_logs"
+    }
+  },
+  "target": {
+    "@type": "EntryPoint",
+    "urlTemplate": "./src/services/api/",
+    "actionApplication": {
+      "@type": "SoftwareSourceCode",
+      "programmingLanguage": "JavaScript"
+    },
+    "example": [
+      {
+        "@type": "HowToDirection",
+        "name": "Municipality API",
+        "text": "Fetch municipalities within bbox from map viewport"
+      },
+      {
+        "@type": "HowToDirection",
+        "name": "Parcel Zone API", 
+        "text": "Query parcel zones by selected municipality"
+      },
+      {
+        "@type": "HowToDirection",
+        "name": "Parcel Blocks API",
+        "text": "Autocomplete search for parcel blocks (particella) within zone"
+      }
+    ]
+  },
+  "result": {
+    "@type": "DataDownload",
+    "encodingFormat": ["application/json"],
+    "description": "JSON response from EV API endpoints"
+  },
+  "backend": {
+    "@id": "https://github.com/piergiorgio-roveda/ev-node-api",
+    "description": "EV API backend - refer to repository for implementation and usage details"
+  },
+  "corsConfiguration": {
+    "problem": "CORS headers may be duplicated between nginx proxy and Express.js middleware",
+    "errorPattern": "Access-Control-Allow-Origin header contains multiple values",
+    "solutions": [
+      {
+        "approach": "Express handles CORS (recommended)",
+        "location": "nginx config",
+        "action": "Remove CORS headers from nginx proxy configuration",
+        "restart": "nginx only"
+      },
+      {
+        "approach": "nginx handles CORS",
+        "location": "Express app",
+        "action": "Disable CORS middleware in Express",
+        "restart": "both nginx and Express service"
+      }
+    ],
+    "verification": {
+      "command": "curl -I -H \"Origin: http://localhost:5173\" https://vm-neural-01.duckdns.org/ev-api/hello",
+      "expected": "Single Access-Control-Allow-Origin header only"
+    },
+    "diagnostics": [
+      "sudo grep -r \"Access-Control-Allow-Origin\" /etc/nginx/",
+      "grep -r \"cors\" ~/ev-api-node/"
+    ]
+  },
+  "deployment": {
+    "environments": {
+      "development": "http://localhost:5173",
+      "production": "https://vm-neural-01.duckdns.org"
+    },
+    "apiEndpoint": "https://vm-neural-01.duckdns.org/ev-api",
+    "proxyConfiguration": "/etc/nginx/sites-available/default"
+  }
+}

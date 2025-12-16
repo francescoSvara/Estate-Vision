@@ -1,0 +1,46 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Action",
+  "@id": "#app:initialize-map",
+  "name": "Initialize MapLibre Map",
+  "identifier": "map-init",
+  "description": "Initialize MapLibre GL JS map with PMTiles support",
+  "instrument": {
+    "@type": "SoftwareApplication",
+    "identifier": "maplibre-gl"
+  },
+  "target": {
+    "@type": "EntryPoint",
+    "urlTemplate": "./src/components/main-content/main-content.js",
+    "actionApplication": {
+      "@type": "SoftwareSourceCode",
+      "programmingLanguage": "JavaScript"
+    },
+    "example": [
+      {
+        "@type": "HowToDirection",
+        "text": "import { MainContent } from './components/main-content/main-content.js';"
+      },
+      {
+        "@type": "HowToDirection",
+        "text": "const mainContent = new MainContent(leftSidebar, rightSidebar, layers);"
+      }
+    ]
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "capabilities",
+      "value": [
+        "Initialize MapLibre map instance with Carto Voyager style",
+        "Load PMTiles protocol and register pmtiles:// URLs",
+        "Configure base layers and vector tile layers",
+        "Set initial view to Rome, Italy (12.4964, 41.9028)",
+        "Add navigation controls and interaction handlers",
+        "Integrate with municipality bbox API on map events",
+        "Support popup system for feature interaction",
+        "Enable layer highlighting and selection"
+      ]
+    }
+  ]
+}

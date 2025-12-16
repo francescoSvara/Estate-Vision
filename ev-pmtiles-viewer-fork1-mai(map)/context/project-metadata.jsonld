@@ -1,0 +1,84 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareSourceCode",
+  "name": "PMTiles Viewer - EV Dashboard",
+  "description": "Enhanced full-screen MapLibre GL JS viewer with modular UI components, PMTiles support, and internationalization. Built with Vite and Vanilla JavaScript for geospatial visualization.",
+  "author": {
+    "@type": "Person",
+    "name": "Piergiorgio Roveda"
+  },
+  "dateCreated": "2025-11-06",
+  "dateModified": "2025-12-06",
+  "programmingLanguage": "JavaScript",
+  "codeRepository": "https://github.com/piergiorgio-roveda/ev-pmtiles-viewer",
+  "directories": {
+    "src/": {
+      "path": "./src",
+      "purpose": "Application source code with modular component architecture",
+      "subdirectories": {
+        "components/": "UI components (map, sidebars, modals, layers)",
+        "i18n/": "Internationalization system (translations, hooks)",
+        "services/": "API and UI service layers",
+        "styles/": "Global CSS and component styles",
+        "utils/": "Utility functions and helpers"
+      },
+      "files": {
+        "main.js": "Application entry point and initialization"
+      }
+    },
+    "public/": {
+      "path": "./public",
+      "purpose": "Static assets served directly",
+      "subdirectories": {
+        "i18n/": "Translation JSON files (en.json, it.json)"
+      },
+      "files": {
+        "index.html": "HTML entry point"
+      }
+    },
+    "scripts/": {
+      "path": "./scripts",
+      "purpose": "Automation, testing, security, and deployment scripts"
+    },
+    "data/": {
+      "path": "./data",
+      "purpose": "Data files and datasets (external, interim, processed, raw)"
+    },
+    "data-schema/": {
+      "path": "./data-schema",
+      "purpose": "Data schemas and API documentation"
+    },
+    "projects/": {
+      "path": "./projects",
+      "purpose": "Project-specific configurations and workflows"
+    },
+    "docs/": {
+      "path": "./docs",
+      "purpose": "Technical documentation (CORS, deployment, features)"
+    },
+    "context/": {
+      "path": "./context",
+      "purpose": "JSON-LD workflow and metadata (source of truth for agents)"
+    },
+    ".github/": {
+      "path": "./.github",
+      "purpose": "GitHub Copilot instructions and CI/CD configuration"
+    },
+    ".vscode/": {
+      "path": "./.vscode",
+      "purpose": "VS Code workspace configuration"
+    }
+  },
+  "deployment": {
+    "buildTool": "Vite",
+    "production": {
+      "url": "https://vm-neural-01.duckdns.org/pmtiles-viewer-beta/",
+      "server": "ssh:vm-neural-01",
+      "remotePath": "/var/www/html/pmtiles-viewer-beta/",
+      "deployCommand": "@id:project-tools.jsonld#deploy:quick"
+    },
+    "basePath": "/pmtiles-viewer-beta/",
+    "protocol": "HTTPS only",
+    "httpsRedirect": true
+  }
+}

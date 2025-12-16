@@ -1,0 +1,724 @@
+/**
+ * Asset Details View Styles - Futuristic Enterprise
+ */
+
+.asset-details-view {
+  width: 100%;
+  min-height: 100%; /* Allow content to stretch */
+  background: radial-gradient(circle at top right, #13151f 0%, #050508 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem;
+  /* overflow-y: auto; handled by container now */
+}
+
+/* Header */
+.asset-details-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 2px;
+  color: var(--text-secondary);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(0, 243, 255, 0.05);
+}
+
+.asset-details-header h2 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Grid Layout */
+.asset-details-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1;
+}
+
+/* Row 1: Map + Summary */
+.details-row-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  height: 400px; /* Fixed height for top section */
+}
+
+/* Row 2: Asset Values */
+.details-row-2 {
+  width: 100%;
+}
+
+/* Row 3: ID + Demographics */
+.details-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  min-height: 250px;
+}
+
+
+/* Common Card Styles */
+.asset-summary-card,
+.asset-values-card,
+.asset-id-card,
+.asset-demographics-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px; /* More rounded corners per wireframe */
+  padding: 2rem;
+  position: relative;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Scrollbars for Cards */
+.asset-summary-card::-webkit-scrollbar,
+.asset-id-card::-webkit-scrollbar,
+.asset-demographics-card::-webkit-scrollbar {
+    width: 6px;
+}
+.asset-summary-card::-webkit-scrollbar-thumb,
+.asset-id-card::-webkit-scrollbar-thumb,
+.asset-demographics-card::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+}
+
+
+/* Mini Map */
+.mini-map-container {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  height: 100%; /* Fill the grid cell */
+  min-height: 300px; /* Ensure minimum height */
+}
+
+/* Map Overlay Info (Coordinates) */
+.map-overlay-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+    padding: 2rem 1.5rem 1rem;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.map-overlay-info .label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+}
+
+.map-overlay-info .value {
+    display: block;
+    font-size: 1.8rem;
+    font-family: 'Rajdhani', monospace;
+    font-weight: 700;
+    color: var(--color-primary); /* Cyan */
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
+
+.mini-map-container::after {
+  content: 'MAP OF THE ASSET';
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  z-index: 10;
+  pointer-events: none;
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid var(--color-primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+/* Cyan Border Effect (Inner Border) */
+.mini-map-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(0, 243, 255, 0.1);
+    border-radius: 12px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+
+#mini-map {
+  width: 100%;
+  height: 100%;
+  background-color: #0b0c12;
+}
+
+.street-view-overlay {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: var(--color-primary);
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 20;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    box-shadow: 0 5px 15px rgba(0, 243, 255, 0.4);
+    transition: transform 0.2s;
+}
+
+.street-view-overlay:hover {
+    transform: translateY(-2px);
+}
+
+/* Section Headings */
+.asset-summary-card h3,
+.asset-values-card h3,
+.asset-id-card h3,
+.asset-demographics-card h3 {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Summary Card Content */
+.asset-summary-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.analysis-text {
+    flex: 1;
+}
+
+.analysis-text p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.analysis-text strong {
+    color: var(--text-primary);
+}
+
+.report-actions {
+    margin-top: auto; /* Push to bottom */
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.report-actions .action-btn {
+    flex: 1 1 calc(33.333% - 0.5rem); /* 3 buttons per row */
+    min-width: 200px; /* Minimum button width */
+    font-size: 0.85rem;
+}
+
+
+/* Asset Values Card */
+.asset-values-card {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    min-height: 120px;
+}
+
+.asset-values-card h3 {
+    margin-bottom: 0;
+    margin-right: 2rem;
+    min-width: 150px;
+}
+
+/* Market Values Grid - Horizontal Layout */
+.market-values-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    width: 100%;
+    align-items: center;
+}
+
+/* Custom scrollbar for horizontal scrolling if needed */
+.market-values-grid::-webkit-scrollbar {
+    height: 6px;
+}
+.market-values-grid::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+}
+
+.market-value-row {
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    font-size: 0.85rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50px; /* Rounded pill shape mostly */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 180px;
+    flex-shrink: 0;
+}
+
+.mv-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.mv-type {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.mv-price {
+    color: var(--color-primary);
+    font-family: 'Rajdhani', monospace;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.mv-bar-container {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    position: relative;
+    width: 100%;
+}
+
+.mv-bar {
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary-dim), var(--color-primary));
+    border-radius: 2px;
+    top: 0;
+}
+
+
+/* Grouping Data Styles (ID & Demographics) */
+.info-group {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.info-group:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.info-group h4 {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+}
+
+.info-row .label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.info-row .value {
+  color: var(--text-primary);
+  font-family: 'Rajdhani', monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: right;
+  max-width: 65%;
+  overflow-wrap: break-word;
+}
+
+/* Action Button */
+.action-btn {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 8px; /* More rounded */
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background: rgba(0, 243, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.action-btn.secondary {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #94a3b8;
+}
+
+.action-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.action-btn.watchlist {
+    border-color: #fbbf24; /* Amber color for watchlist */
+    color: #fbbf24;
+}
+
+.action-btn.watchlist:hover {
+    background: rgba(251, 191, 36, 0.1);
+    border-color: #fbbf24;
+    color: #fbbf24;
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+}
+
+.action-btn.watchlist.success {
+    border-color: #10b981; /* Green for success */
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.action-btn.watchlist:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.action-btn svg {
+    margin-right: 0.5rem;
+}
+
+
+/* Print Report Header/Footer (Hidden on screen) */
+.print-report-header,
+.print-report-footer {
+  display: none;
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 20mm 15mm;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Show Report Header */
+  .print-report-header {
+    display: block !important;
+    padding: 20px;
+    border-bottom: 3px solid #00f3ff;
+    margin-bottom: 30px;
+    page-break-after: avoid;
+  }
+
+  .report-logo img {
+    height: 40px;
+    margin-bottom: 15px;
+    filter: brightness(0);
+  }
+
+  .report-meta h1 {
+    color: #000 !important;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+    font-weight: 700;
+  }
+
+  .report-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .report-info-item {
+    display: flex;
+    gap: 10px;
+    font-size: 11px;
+  }
+
+  .report-info-item .label {
+    font-weight: 600;
+    color: #555 !important;
+  }
+
+  .report-info-item .value {
+    color: #000 !important;
+  }
+
+  .report-classification {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #f0f0f0;
+    padding: 5px 15px;
+    border: 2px solid #00f3ff;
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  /* Show Report Footer */
+  .print-report-footer {
+    display: block !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    border-top: 1px solid #ccc;
+    background: #f9f9f9;
+    font-size: 9px;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    color: #666 !important;
+  }
+
+  .footer-left p,
+  .footer-right p {
+    margin: 0;
+    color: #666 !important;
+  }
+
+  /* Hide original header */
+  .asset-details-header {
+    display: none !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+  .asset-details-view, .asset-details-view * {
+    visibility: visible;
+  }
+  .asset-details-view {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: white !important;
+    color: black !important;
+    min-height: auto;
+    height: auto;
+    overflow: visible;
+  }
+  
+  /* Hide UI elements */
+  .back-btn, 
+  .report-actions, 
+  .street-view-overlay,
+  .map-overlay-info {
+    display: none !important;
+  }
+  
+  /* Reset colors for print */
+  h2, h3, h4, p, span {
+    color: #000 !important;
+    text-shadow: none !important;
+  }
+
+  .asset-summary-card h3,
+  .asset-values-card h3,
+  .asset-id-card h3,
+  .asset-demographics-card h3 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    margin-bottom: 15px !important;
+    padding-bottom: 8px !important;
+    border-bottom: 2px solid #00f3ff !important;
+  }
+
+  .info-row .label,
+  .mv-type {
+    color: #555 !important;
+    font-weight: 600 !important;
+  }
+
+  .info-row .value,
+  .mv-price {
+    color: #000 !important;
+  }
+
+  .analysis-text p {
+    color: #333 !important;
+    font-size: 11px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Reset Card Styles */
+  .asset-summary-card,
+  .asset-values-card,
+  .asset-id-card,
+  .asset-demographics-card {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  .mini-map-container {
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    height: 300px !important;
+  }
+  
+  .mini-map-container::after {
+      display: none;
+  }
+
+  /* Layout adjustments for print */
+  .asset-details-grid {
+    padding: 20px;
+  }
+
+  .details-row-1, 
+  .details-row-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      page-break-inside: avoid;
+      height: auto;
+      margin-bottom: 20px;
+  }
+
+  .details-row-2 {
+      margin-bottom: 20px;
+      page-break-inside: avoid;
+  }
+
+  .mini-map-container {
+      height: 300px !important;
+      margin-bottom: 0;
+  }
+
+  .asset-values-card {
+      margin-bottom: 20px;
+      page-break-inside: avoid;
+  }
+
+  /* Market Values Grid */
+  .market-values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .market-value-row {
+    border: 1px solid #e0e0e0 !important;
+    padding: 12px !important;
+    background: #f9f9f9 !important;
+  }
+
+  .info-group {
+    margin-bottom: 15px;
+    page-break-inside: avoid;
+  }
+
+  .info-group h4 {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    padding-bottom: 5px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+  }
+
+  .info-row {
+    padding: 8px 0 !important;
+    border-bottom: 1px dotted #e0e0e0 !important;
+    font-size: 11px !important;
+  }
+  
+  /* Bars in chart */
+  .mv-bar-container {
+      background: #eee !important;
+  }
+  .mv-bar {
+      background: #000 !important; /* Black bars for contrast */
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+  }
+  
+  /* Remove scrollbars */
+  .asset-summary-card::-webkit-scrollbar,
+  .asset-id-card::-webkit-scrollbar,
+  .asset-demographics-card::-webkit-scrollbar,
+  .market-values-grid::-webkit-scrollbar {
+      display: none;
+  }
+}

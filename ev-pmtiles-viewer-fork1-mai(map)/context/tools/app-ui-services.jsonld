@@ -1,0 +1,49 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Action",
+  "@id": "#app:ui-services",
+  "name": "UI Service Layer",
+  "identifier": "ui-services",
+  "description": "Utility services for DOM manipulation, notifications, and component lifecycle management",
+  "target": {
+    "@type": "EntryPoint",
+    "urlTemplate": "./src/services/ui/",
+    "actionApplication": {
+      "@type": "SoftwareSourceCode",
+      "programmingLanguage": "JavaScript"
+    },
+    "example": [
+      {
+        "@type": "HowToDirection",
+        "text": "import { UiService } from './services/ui/ui-service.js';"
+      }
+    ]
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "uiCapabilities",
+      "value": [
+        "Dynamic DOM element creation with properties",
+        "Event listener management with cleanup tracking",
+        "Notification system with type-based styling",
+        "Utility functions for component development"
+      ]
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "services",
+      "value": [
+        {
+          "service": "UiService",
+          "path": "./src/services/ui/ui-service.js",
+          "methods": [
+            "createElement(tag, properties, children)",
+            "addEventListenerWithCleanup(element, event, handler)",
+            "showNotification(message, type, duration)"
+          ]
+        }
+      ]
+    }
+  ]
+}

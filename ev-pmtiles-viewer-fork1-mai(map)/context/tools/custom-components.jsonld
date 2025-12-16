@@ -1,0 +1,17 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareApplication",
+  "@id": "./custom-components.jsonld",
+  "name": "Custom Component System",
+  "description": "Lightweight JavaScript component architecture for modular UI development",
+  "applicationCategory": "UI Framework",
+  "isAccessibleForFree": true,
+  "featureList": [
+    "Modular component structure",
+    "CSS scoping per component",
+    "Event-driven architecture",
+    "No framework dependencies",
+    "Kebab-case folder naming"
+  ],
+  "usage": "uiFramework"
+}

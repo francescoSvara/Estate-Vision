@@ -1,0 +1,21 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareApplication",
+  "@id": "./carto-voyager.jsonld",
+  "name": "Carto Voyager",
+  "description": "Base map style for web mapping applications",
+  "applicationCategory": "Map Style",
+  "isAccessibleForFree": true,
+  "url": "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
+  "featureList": [
+    "Vector-based basemap",
+    "Clean design aesthetic",
+    "Optimized for data visualization",
+    "MapLibre GL compatible"
+  ],
+  "usage": "baseMaps",
+  "baseMap": {
+    "provider": "Carto Voyager",
+    "styleUrl": "basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
+  }
+}

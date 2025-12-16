@@ -1,0 +1,69 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Action",
+  "@id": "#app:search-components",
+  "name": "Search Components System",
+  "identifier": "search-components",
+  "description": "Multi-layered search system for addresses, municipalities, parcel zones, and parcel blocks",
+  "target": {
+    "@type": "EntryPoint",
+    "urlTemplate": "./src/components/",
+    "actionApplication": {
+      "@type": "SoftwareSourceCode",
+      "programmingLanguage": "JavaScript"
+    },
+    "example": [
+      {
+        "@type": "HowToDirection",
+        "text": "import { AddressSearch } from './components/addresses-search/address-search/address-search.js';"
+      },
+      {
+        "@type": "HowToDirection",
+        "text": "import { MunicipalitySelector } from './components/cadastral-search/municipality-selector/municipality-selector.js';"
+      }
+    ]
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "searchComponents",
+      "value": [
+        {
+          "component": "AddressSearch",
+          "path": "./src/components/addresses-search/address-search/",
+          "functionality": "Text-based address search with autocomplete",
+          "status": "implemented_todo_placeholder"
+        },
+        {
+          "component": "MunicipalitySelector",
+          "path": "./src/components/cadastral-search/municipality-selector/",
+          "functionality": "Municipality selection from bbox API results",
+          "status": "fully_implemented"
+        },
+        {
+          "component": "ParcelZoneSelector",
+          "path": "./src/components/cadastral-search/parcel-zone-selector/",
+          "functionality": "Parcel zone selection by municipality",
+          "status": "fully_implemented"
+        },
+        {
+          "component": "ParcelBlocksSearch",
+          "path": "./src/components/cadastral-search/parcel-blocks-search/",
+          "functionality": "Autocomplete search for parcel blocks (particella)",
+          "status": "fully_implemented"
+        }
+      ]
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "searchWorkflow",
+      "value": [
+        "1. Optional address search for general location",
+        "2. Municipality selection from map bbox API",
+        "3. Parcel zone selection within municipality",
+        "4. Parcel block autocomplete search",
+        "5. Map navigation and parcel highlighting"
+      ]
+    }
+  ]
+}

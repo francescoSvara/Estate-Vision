@@ -1,0 +1,154 @@
+/**
+ * Parcel Analytics Manager Styles
+ * Manages workspace and card layout for selected parcel analytics
+ */
+
+.parcel-analytics-workspace {
+  width: 100%;
+  padding: 0;
+}
+
+.analytics-section {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.analytics-section-title {
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.parcel-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Parcel Analytics Card Styles */
+.parcel-analytics-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.parcel-analytics-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.parcel-id {
+  font-weight: 500;
+  color: white;
+  font-size: 0.85rem;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.card-action-btn {
+  height: 24px;
+  padding: 0.25rem 0.5rem;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.expand-details-btn {
+  background: var(--color-primary);
+}
+
+.expand-details-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.remove-card-btn {
+  background: var(--color-red);
+}
+
+.remove-card-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.card-details {
+  display: none;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.details-loading {
+  opacity: 0.6;
+  font-style: italic;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.details-content {
+  line-height: 1.5;
+}
+
+.details-content > div {
+  margin-bottom: 4px;
+}
+
+.details-content span {
+  opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .analytics-section {
+    margin-top: 1rem;
+    padding: 0.75rem;
+  }
+
+  .parcel-analytics-card {
+    padding: 0.5rem;
+  }
+
+  .card-action-btn {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+  }
+}

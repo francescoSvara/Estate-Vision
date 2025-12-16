@@ -1,0 +1,732 @@
+classDiagram
+    %% Main Application Class
+    class mainApp {
+        +appContent
+        +constructor()
+        +init()
+    }
+
+    %% Core UI Components
+    class AppContent {
+        +element
+        +auxiliaryButtonGroup
+        +mainMap
+        +infoModal
+        +leftSidebar
+        +rightSidebar
+        +constructor()
+        +init()
+        +render()
+    }
+
+    class LeftSidebar {
+        +element
+        +translation
+        +sidebarSearchMode
+        +addressSearch
+        +cadastralSearch
+        +layerControls
+        +constructor()
+        +_initializeComponents()
+        +render()
+        +setupLanguageListener()
+        +reRenderWithTranslations()
+    }
+
+    class RightSidebar {
+        +element
+        +isVisible
+        +onClose
+        +onOpen
+        +toggleButtonInstance
+        +translation
+        +healthIndicators
+        +parcelAnalyticsManager
+        +constructor()
+        +_initializeComponents()
+        +init()
+        +createToggleButton()
+        +initializeToggleButton()
+        +render()
+        +toggle()
+        +open()
+        +close()
+        +reRenderWithTranslations()
+        +destroy()
+    }
+
+    class MainMap {
+        +containerId
+        +map
+        +leftSidebar
+        +rightSidebar
+        +layerControls
+        +buttonGroup
+        +popupContentManager
+        +mapLayerService
+        +layers
+        +layerConfig
+        +mapButtonService
+        +constructor(containerId, leftSidebar, rightSidebar)
+        +setAuxiliaryButtonGroup(buttonGroup)
+        +init()
+        +setupMapInteractions()
+        +addLayersToMap()
+        +setLeftSidebar(sidebar)
+        +setRightSidebar(sidebar)
+    }
+
+    %% UI Control Components
+    class toggleButton {
+        +position
+        +onToggle
+        +constructor(position, onToggle)
+        +updateState(isOpen)
+        +updateButtonDisplay()
+        +render()
+        +show()
+        +hide()
+    }
+
+    class AuxiliaryButtonGroup {
+        +element
+        +buttons
+        +mapButtons
+        +skeletons
+        +rightSidebar
+        +constructor()
+        +createSkeleton(skeletonId, name, persistent, requiresMap)
+        +render()
+        +addButton(button)
+        +getElement()
+    }
+
+    class InfoModal {
+        +element
+        +infoModalButton
+        +buttonElement
+        +isVisible
+        +auxiliaryButtonGroup
+        +title
+        +onClose
+        +constructor()
+        +init(auxiliaryButtonGroup)
+        +render()
+        +show()
+        +hide()
+    }
+
+    class MainModal {
+        +element
+        +title
+        +content
+        +isVisible
+        +onClose
+        +constructor(title, content)
+        +render()
+        +addEventListeners()
+        +show()
+        +hide()
+        +setContent(content)
+        +setTitle(title)
+        +setOnClose(callback)
+    }
+
+    class ModalButton {
+        +element
+        +onClick
+        +text
+        +icon
+        +ariaLabel
+        +className
+        +constructor(onClick, text, icon, ariaLabel, className)
+        +render()
+        +setOnClick(callback)
+        +setText(text)
+    }
+
+    class MapButton {
+        +element
+        +onClick
+        +text
+        +icon
+        +ariaLabel
+        +className
+        +isEnabled
+        +constructor(onClick, text, icon, ariaLabel, className, isEnabled)
+        +render()
+    }
+
+    %% Search Components
+    class AddressSearch {
+        +element
+        +sidebarElement
+        +searchValue
+        +onSelectionChange
+        +debounceTimer
+        +debounceDelay
+        +constructor(onSelectionChange)
+        +render()
+        +setSidebarElement(sidebarElement)
+        +onAddressSelected(address)
+        +init()
+        +attachEventListeners()
+        +performSearch()
+    }
+
+    class CadastralSearch {
+        +element
+        +sidebarElement
+        +layerInstances
+        +callbacks
+        +municipalitySelector
+        +parcelZoneSelector
+        +parcelBlocksSearch
+        +constructor(callbacks, layerInstances)
+        +render()
+        +init()
+        +setSidebarElement(sidebarElement)
+        +insertMunicipalitySelector()
+        +insertParcelZoneSelector()
+        +insertParcelBlocksSearch()
+        +onMunicipalitySelected(municipality)
+        +onParcelZoneSelected(zone, municipality)
+        +onParcelBlockSelected(block, zone, municipality)
+    }
+
+    class MunicipalitySelector {
+        +element
+        +selectedMunicipality
+        +municipalities
+        +apiService
+        +translation
+        +onMunicipalitySelected
+        +constructor(onMunicipalitySelected)
+        +render()
+        +attachEventListeners()
+        +loadMunicipalities()
+        +handleMunicipalitySelection(municipality)
+    }
+
+    class ParcelBlocksSearch {
+        +element
+        +selectedMunicipalityId
+        +selectedZoneId
+        +parcelBlocks
+        +formattedParcelBlocks
+        +isDisabled
+        +apiService
+        +translation
+        +onParcelBlockSelected
+        +parcelsLayersInstance
+        +constructor(onParcelBlockSelected, parcelsLayersInstance)
+        +render()
+        +attachEventListeners()
+        +searchBlocks(municipalityId, query)
+        +handleBlockSelection(block)
+    }
+
+    class ParcelZoneSelector {
+        +element
+        +selectedMunicipalityId
+        +selectedZone
+        +parcelZones
+        +isDisabled
+        +apiService
+        +translation
+        +onParcelZoneSelected
+        +constructor(onParcelZoneSelected)
+        +render()
+        +attachEventListeners()
+        +loadZones(municipalityId)
+        +handleZoneSelection(zone)
+    }
+
+    class SidebarSearchMode {
+        +element
+        +searchMode
+        +onModeChange
+        +translation
+        +containerElement
+        +sidebarElement
+        +constructor(initialMode, onModeChange, sidebarElement)
+        +init(container, retryCount)
+        +render()
+        +setTranslation(translation)
+        +attachEventListeners()
+        +switchMode(mode)
+    }
+
+    %% Layer System
+    class LayerControls {
+        +element
+        +layerCallbacks
+        +pendingLayers
+        +pendingCallbacks
+        +translation
+        +containerElement
+        +sidebarElement
+        +layerInstances
+        +layers
+        +layerGroups
+        +accordionStates
+        +constructor(layerConfig, translation)
+        +setTranslation(translation)
+        +setSidebarElement(sidebarElement)
+        +setLayerInstances(layerInstances)
+        +init(container, retryCount)
+        +render()
+        +groupLayers(layers)
+        +toggleLayerVisibility(layerId)
+        +addLayerToggleCallback(layerId, callback)
+    }
+
+    class ParcelsLayers {
+        +layerName
+        +layerInToc
+        +layerColor
+        +parcelLayers
+        +layerState
+        +constructor(parcelLayerInstances)
+        +render()
+        +getLayer(id)
+    }
+
+    class BaseLayer {
+        <<abstract>>
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +show()
+        +hide()
+        +toggle()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM00Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM01Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM02Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM03Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM04Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM05Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM06Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM07Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM08Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM09Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM10Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class ParcelsM99Layer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    class InventarioAssetsLayer {
+        +layerName
+        +layerState
+        +layerInToc
+        +layerColor
+        +pmtilesUrl
+        +sourceLayer
+        +constructor()
+        +getConfig()
+        +addToMap(map)
+    }
+
+    %% Analytics Components
+    class ParcelAnalyticsManager {
+        +element
+        +containerElement
+        +parcelAnalyticsStore
+        +translation
+        +apiService
+        +constructor(containerElement)
+        +init()
+        +render()
+        +renderTo(container)
+        +renderCard(container, parcelData)
+        +handleRemoveCard(parcelId, container)
+        +addParcel(parcelData)
+        +removeParcel(parcelId)
+        +clearAllParcels()
+        +reRenderWithTranslations()
+        +destroy()
+    }
+
+    class ParcelAnalyticsCard {
+        +parcelData
+        +apiService
+        +translation
+        +onRemove
+        +element
+        +detailsExpanded
+        +constructor(parcelData, apiService, translation, onRemove)
+        +render()
+        +toggleDetails()
+        +fetchAndRenderDetails()
+        +destroy()
+    }
+
+    class HealthIndicators {
+        +element
+        +apiService
+        +translation
+        +dbIndicator
+        +apiIndicator
+        +constructor()
+        +render()
+        +_cacheIndicatorElements()
+        +init()
+        +_performHealthChecks()
+        +checkApiStatus()
+        +checkDatabaseStatus()
+        +_setIndicatorStatus(indicator, status, color)
+        +updateTranslations()
+        +destroy()
+    }
+
+    %% Services
+    class ApiService {
+        +baseUrl
+        +defaultHeaders
+        +constructor(baseUrl, defaultHeaders)
+        +get(endpoint, options)
+        +post(endpoint, data)
+    }
+
+    class UiService {
+        +createElement(tag, properties, children)$
+        +addEventListenerWithCleanup(element, event, handler, options)$
+        +showNotification(message, type, duration)$
+    }
+
+    class MapLayerService {
+        +layers
+        +layerConfig
+        +constructor()
+        +initializeLayers()
+        +buildLayerConfig()
+        +getLayers()
+        +getLayerConfig()
+    }
+
+    class MapButtonService {
+        +mainMap
+        +auxiliaryButtonGroup
+        +mapButtons
+        +constructor(mainMap, auxiliaryButtonGroup)
+        +setMainMap(mainMap)
+        +setAuxiliaryButtonGroup(auxiliaryButtonGroup)
+        +initializeMapButtons()
+        +createHomeButton(MapButton)
+        +createZoomButtons(MapButton)
+        +initializeLucideIcons()
+    }
+
+    class mainMapManager {
+        +_mainMapInstance
+        +constructor()
+        +setMapInstance(mapInstance)
+        +getMapInstance()
+        +isInitialized()
+        +clearMapInstance()
+    }
+
+    class MunicipalityApi {
+        +apiService
+        +constructor(apiService)
+        +fetchMunicipalities()
+        +fetchMunicipalitiesInBbox(bounds)
+    }
+
+    class ParcelBlocksApi {
+        +apiService
+        +constructor(apiService)
+        +searchParcelBlocks(municipalityId, query)
+    }
+
+    class ParcelZoneApi {
+        +apiService
+        +constructor(apiService)
+        +fetchParcelZones(municipalityId)
+    }
+
+    %% Internationalization
+    class I18n {
+        +currentLanguage
+        +listeners
+        +translationsLoaded
+        +loadingPromise
+        +constructor()
+        +loadTranslations()
+        +detectLanguage()
+        +setLanguage(language)
+        +t(key, interpolations)
+        +onChange(callback)
+        +offChange(callback)
+    }
+
+    class LanguageSwitcher {
+        +element
+        +currentLanguage
+        +availableLanguages
+        +translation
+        +constructor()
+        +render()
+        +addEventListeners()
+        +destroy()
+    }
+
+    %% Popup System
+    class PopupContentManager {
+        +layers
+        +apiService
+        +constructor(layers)
+        +updateLayers(layers)
+        +getPopupContent(coordinates, clickEvent)
+        +checkLayerIntersections(clickEvent)
+        +generateLayerContent(intersectedLayers)
+        +formatProperty(key, value)
+    }
+
+    %% Utilities
+    class MunicipalityUtils {
+        +formatMunicipalityName(name)$
+        +validateMunicipalityCode(code)$
+        +getMunicipalityBounds(municipality)$
+    }
+
+    %% Relationships
+    mainApp *-- AppContent
+    
+    AppContent *-- AuxiliaryButtonGroup
+    AppContent *-- MainMap
+    AppContent *-- InfoModal
+    AppContent *-- LeftSidebar
+    AppContent *-- RightSidebar
+
+    MainMap *-- MapLayerService
+    MainMap *-- MapButtonService
+    MainMap *-- PopupContentManager
+    MainMap --> LeftSidebar : uses
+    MainMap --> RightSidebar : uses
+    MainMap --> mainMapManager : registers with
+    
+    LeftSidebar *-- SidebarSearchMode
+    LeftSidebar *-- AddressSearch
+    LeftSidebar *-- CadastralSearch
+    LeftSidebar *-- LayerControls
+    LeftSidebar --> I18n : uses
+
+    CadastralSearch *-- MunicipalitySelector
+    CadastralSearch *-- ParcelZoneSelector
+    CadastralSearch *-- ParcelBlocksSearch
+    
+    RightSidebar *-- HealthIndicators
+    RightSidebar *-- ParcelAnalyticsManager
+    RightSidebar --> toggleButton : creates
+    RightSidebar --> I18n : uses
+    
+    ParcelAnalyticsManager *-- ParcelAnalyticsCard
+    ParcelAnalyticsManager --> ApiService : uses
+    
+    ParcelAnalyticsCard --> ApiService : uses
+    
+    HealthIndicators --> ApiService : uses
+    HealthIndicators --> I18n : uses
+    
+    InfoModal *-- ModalButton
+    InfoModal --> AuxiliaryButtonGroup : uses
+
+    MapLayerService --> ParcelsLayers : initializes
+    MapLayerService --> InventarioAssetsLayer : initializes
+    
+    ParcelsLayers *-- ParcelsM00Layer
+    ParcelsLayers *-- ParcelsM01Layer
+    ParcelsLayers *-- ParcelsM02Layer
+    ParcelsLayers *-- ParcelsM03Layer
+    ParcelsLayers *-- ParcelsM04Layer
+    ParcelsLayers *-- ParcelsM05Layer
+    ParcelsLayers *-- ParcelsM06Layer
+    ParcelsLayers *-- ParcelsM07Layer
+    ParcelsLayers *-- ParcelsM08Layer
+    ParcelsLayers *-- ParcelsM09Layer
+    ParcelsLayers *-- ParcelsM10Layer
+    ParcelsLayers *-- ParcelsM99Layer
+    
+    BaseLayer <|-- ParcelsM00Layer
+    BaseLayer <|-- ParcelsM01Layer
+    BaseLayer <|-- ParcelsM02Layer
+    BaseLayer <|-- ParcelsM03Layer
+    BaseLayer <|-- ParcelsM04Layer
+    BaseLayer <|-- ParcelsM05Layer
+    BaseLayer <|-- ParcelsM06Layer
+    BaseLayer <|-- ParcelsM07Layer
+    BaseLayer <|-- ParcelsM08Layer
+    BaseLayer <|-- ParcelsM09Layer
+    BaseLayer <|-- ParcelsM10Layer
+    BaseLayer <|-- ParcelsM99Layer
+    BaseLayer <|-- InventarioAssetsLayer
+
+    LayerControls --> I18n : uses
+    
+    MapButtonService --> MainMap : uses
+    MapButtonService --> AuxiliaryButtonGroup : uses
+    MapButtonService --> MapButton : creates
+
+    AddressSearch --> mainMapManager : uses
+    MunicipalitySelector --> ApiService : uses
+    MunicipalitySelector --> MunicipalityApi : uses
+    MunicipalitySelector --> I18n : uses
+    ParcelBlocksSearch --> ApiService : uses
+    ParcelBlocksSearch --> ParcelBlocksApi : uses
+    ParcelBlocksSearch --> I18n : uses
+    ParcelBlocksSearch --> mainMapManager : uses
+    ParcelZoneSelector --> ApiService : uses
+    ParcelZoneSelector --> ParcelZoneApi : uses
+    ParcelZoneSelector --> I18n : uses
+
+    LanguageSwitcher --> I18n : uses
+    
+    SidebarSearchMode --> I18n : uses
+    
+    MunicipalitySelector --> MunicipalityUtils : uses
+    ParcelBlocksSearch --> MunicipalityUtils : uses
+    
+    MunicipalityApi --> ApiService : uses
+    ParcelBlocksApi --> ApiService : uses
+    ParcelZoneApi --> ApiService : uses
+    
+    PopupContentManager --> ApiService : uses
+    PopupContentManager --> mainMapManager : uses

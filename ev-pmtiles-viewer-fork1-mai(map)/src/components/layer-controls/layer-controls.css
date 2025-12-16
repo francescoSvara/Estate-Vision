@@ -1,0 +1,123 @@
+/**
+ * Layer Controls Component Styles
+ */
+
+.layer-controls {
+  padding: 0;
+  margin: 0;
+}
+
+.layer-controls .section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem 0;
+  padding: 0;
+}
+
+.layer-controls .no-layers-message {
+  padding: 1rem 0;
+}
+
+.layer-controls .no-layers-message p {
+  color: var(--text-comment);
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+}
+
+.layer-controls .no-layers-message code {
+  background: var(--bg-secondary);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.layer-controls .layer-toggle {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-current-line);
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: auto;
+  min-height: 40px;
+}
+
+.layer-controls .layer-toggle:enabled:hover {
+  background: var(--bg-current-line);
+  border-color: var(--bg-current-line);
+  transform: translateY(-1px);
+}
+
+.layer-controls .layer-toggle.active {
+  background: var(--bg-secondary);
+  color: var(--color-green);
+  border-color: var(--bg-current-line);
+  font-weight: 900;
+}
+
+.layer-controls .layer-toggle.active:hover {
+  background: var(--bg-current-line);
+  transform: translateY(-1px);
+}
+
+.layer-controls .layer-toggle-icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.layer-controls .layer-toggle.active .layer-toggle-icon {
+  background: var(--accent-text);
+}
+
+.layer-controls .layer-toggle-title {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.layer-controls .toggle-all-parcels {
+  background: var(--bg-secondary);
+  border-color: var(--color-purple);
+  font-weight: 600;
+}
+
+.layer-controls .toggle-all-parcels:enabled:hover {
+  background: var(--bg-current-line);
+  border-color: var(--color-purple);
+  transform: translateY(-1px);
+}
+
+.layer-controls .toggle-all-parcels.active {
+  background: var(--bg-secondary);
+  color: var(--color-green);
+  border-color: var(--bg-current-line);
+  font-weight: 900;
+}
+
+.layer-controls .toggle-all-parcels.active:hover {
+  background: var(--bg-current-line);
+  transform: translateY(-1px);
+}
+
+.layer-controls .toggle-all-parcels .layer-toggle-icon {
+  background: var(--color-purple);
+}
+
+.layer-controls .toggle-all-parcels.active .layer-toggle-icon {
+  background: var(--color-green);
+}

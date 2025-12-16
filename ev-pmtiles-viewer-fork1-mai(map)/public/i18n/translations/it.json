@@ -1,0 +1,59 @@
+{
+  "sidebar": {
+    "left": {
+      "title": "EV Dashboard",
+      "subtitle": "Livelli mappa interattivi",
+      "searchMode": "Modalità di Ricerca",
+      "searchForAddresses": "Ricerca per Indirizzi",
+      "searchForCadastral": "Ricerca per Catasto",
+      "dataLayers": "Livelli Mappa",
+      "adminBoundaries": "Confini Amministrativi",
+      "parcelsGroup": "Livelli Particelle",
+      "toggleAllParcels": "Attiva/Disattiva Tutte le Particelle"
+    },
+    "right": {
+      "analytics": "Analisi",
+      "dataMeta": "Dati e informazioni sulla mappa",
+      "closeSidebar": "Chiudi barra laterale",
+      "apiStatus": "Stato API",
+      "databaseStatus": "Stato Database",
+      "tools": "Strumenti",
+      "selectedParcels": "Particelle Selezionate",
+      "expandDetails": "Espandi Dettagli",
+      "removeParcel": "Rimuovi",
+      "loadingDetails": "Caricamento dettagli...",
+      "particella": "Particella",
+      "zonaOmi": "Zona OMI",
+      "censusData": "Dati Censimento",
+      "families": "Famiglie",
+      "buildings": "Edifici",
+      "realEstateOmi": "Immobili (OMI)",
+      "noAdditionalDetails": "Nessun dettaglio aggiuntivo disponibile. Prova a cliccare sulla particella sulla mappa per aggiornare i dati.",
+      "errorLoadingDetails": "Errore nel caricamento dei dettagli.",
+      "detailedStatsTitle": "Statistiche Dettagliate",
+      "export": "Esporta",
+      "exportToPdf": "Esporta in PDF",
+      "toggleFullscreen": "Attiva/Disattiva Schermo Intero",
+      "loadingApiStatus": "Caricamento stato API...",
+      "loadingDetailedStats": "Caricamento statistiche dettagliate...",
+      "checkingApiStatus": "Controllo stato API...",
+      "checkingDatabaseStatus": "Controllo stato database...",
+      "apiStatusOk": "✓ Stato API: OK",
+      "apiStatusError": "✗ Stato API: Errore",
+      "apiStatusUnknown": "⚠ Stato API: Sconosciuto",
+      "databaseStatusHealthy": "✓ Stato Database: Funzionante",
+      "databaseStatusDegraded": "⚠ Stato Database: Degradato",
+      "databaseStatusError": "✗ Stato Database: Errore",
+      "apiResponding": "L'API sta rispondendo correttamente",
+      "failedToConnect": "Impossibile connettersi",
+      "unexpectedResponse": "Risposta inaspettata",
+      "someDatabaseConnectionsFailing": "Alcune connessioni al database stanno fallendo",
+      "unknownDatabaseError": "Errore database sconosciuto",
+      "maplibre": "MapLibre GL JS",
+      "copyright": "EV Dashboard"
+    }
+  },
+  "map": {
+    "title": "Mappa PMTiles"
+  }
+}

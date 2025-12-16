@@ -1,0 +1,178 @@
+/* Left Sidebar Component Styles - Futuristic Enterprise */
+
+.left-sidebar {
+  width: 280px; /* Slightly wider for enterprise data */
+  min-width: 280px;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  z-index: 50;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+}
+
+/* Sidebar Header */
+.left-sidebar .sidebar-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+}
+
+.left-sidebar .sidebar-title {
+  margin: 0 0 0.25rem 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
+
+.left-sidebar .sidebar-subtitle {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  opacity: 0.8;
+}
+
+/* Sidebar Body */
+.left-sidebar .sidebar-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+/* Section Styling */
+.sidebar-section-title {
+  padding: 0 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-left: 2px solid var(--color-primary);
+  line-height: 1;
+}
+
+/* Navigation Buttons (Portfolio/Graph) */
+.sidebar-portfolio-link {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--glass-border);
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sidebar-nav-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  border-radius: 2px;
+  color: var(--text-secondary);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-nav-btn svg {
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.sidebar-nav-btn:hover {
+  border-color: var(--color-primary);
+  background: rgba(0, 243, 255, 0.05);
+  color: var(--text-primary);
+  box-shadow: inset 2px 0 0 var(--color-primary); /* Left accent line on hover */
+}
+
+.sidebar-nav-btn:hover svg {
+  color: var(--color-primary);
+  filter: drop-shadow(0 0 5px var(--color-primary));
+}
+
+.sidebar-nav-btn.active {
+  background: var(--color-primary-dim);
+  border-color: var(--color-primary);
+  color: var(--text-primary);
+}
+
+/* Specific button styles override */
+#sidebar-portfolio-btn {
+  /* Inherits base styles, can add specific flare if needed */
+}
+
+/* Layer Controls Restyling */
+.left-sidebar .layer-group {
+  margin: 0 1rem 0.5rem 1rem;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.01);
+  border-radius: 2px;
+}
+
+.left-sidebar .layer-group-header {
+  background: transparent;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid transparent;
+}
+
+.left-sidebar .layer-group-header:hover {
+  background: rgba(255,255,255,0.03);
+  border-bottom-color: var(--glass-border);
+}
+
+.left-sidebar .layer-group-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.left-sidebar .layer-group-content {
+  background: rgba(0,0,0,0.2);
+  padding: 0.75rem;
+}
+
+.left-sidebar .layer-toggle {
+  padding: 0.25rem 0;
+}
+
+.left-sidebar .layer-toggle-title {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.left-sidebar input[type="checkbox"] {
+  accent-color: var(--color-primary);
+}
+
+/* Footer */
+.left-sidebar .sidebar-footer {
+  padding: 1rem;
+  border-top: 1px solid var(--glass-border);
+  text-align: center;
+}
+
+.left-sidebar .version {
+  font-family: 'Rajdhani', monospace;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  opacity: 0.6;
+}

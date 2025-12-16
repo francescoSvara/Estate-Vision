@@ -1,0 +1,207 @@
+/* Info Modal Component Styles */
+
+/* Modal Overlay and Container */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-container {
+  background-color: var(--bg-secondary, #fff);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--bg-current-line, #dee2e6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title {
+  margin: 0;
+  color: var(--text-primary, #333);
+  font-weight: 600;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  color: var(--text-primary, #333);
+  transition: background-color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--bg-current-line, #f1f3f4);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+  color: var(--text-primary, #333);
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--bg-current-line, #dee2e6);
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.modal-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.modal-btn-primary {
+  background-color: var(--color-purple, #6f42c1);
+  color: white;
+}
+
+.modal-btn-primary:hover {
+  background-color: var(--color-purple-dark, #5a359a);
+}
+
+.modal-btn-secondary {
+  background-color: var(--bg-primary, #fff);
+  color: var(--text-primary, #333);
+  border: 1px solid var(--bg-current-line, #dee2e6);
+}
+
+.modal-btn-secondary:hover {
+  background-color: var(--bg-current-line, #f1f3f4);
+}
+
+/* Info Modal Specific Content */
+.info-modal-content {
+  font-family: var(
+    --font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif
+  );
+  line-height: 1.6;
+  color: var(--text-primary, #333);
+}
+
+.info-section {
+  margin-bottom: 1.5rem;
+}
+
+.info-section:last-child {
+  margin-bottom: 0;
+}
+
+.info-section h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-purple, #6f42c1);
+}
+
+.info-section p {
+  margin: 0 0 0.75rem 0;
+  color: var(--text-primary, #333);
+}
+
+.info-section p:last-child {
+  margin-bottom: 0;
+}
+
+.info-section ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.info-section li {
+  margin-bottom: 0.5rem;
+  color: var(--text-primary, #333);
+}
+
+.info-section li:last-child {
+  margin-bottom: 0;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .modal-container {
+    background-color: var(--bg-secondary-dark, #2d2d2d);
+  }
+
+  .modal-title {
+    color: var(--text-primary-dark, #e8e8e8);
+  }
+
+  .modal-close-btn {
+    color: var(--text-primary-dark, #e8e8e8);
+  }
+
+  .modal-close-btn:hover {
+    background-color: var(--bg-current-line-dark, #404040);
+  }
+
+  .modal-body {
+    color: var(--text-primary-dark, #e8e8e8);
+  }
+
+  .modal-footer {
+    border-top: 1px solid var(--bg-current-line-dark, #404040);
+  }
+
+  .modal-btn-secondary {
+    background-color: var(--bg-primary-dark, #1e1e1e);
+    color: var(--text-primary-dark, #e8e8e8);
+    border: 1px solid var(--bg-current-line-dark, #404040);
+  }
+
+  .modal-btn-secondary:hover {
+    background-color: var(--bg-current-line-dark, #404040);
+  }
+
+  .info-modal-content {
+    color: var(--text-primary-dark, #e8e8e8);
+  }
+
+  .info-section h4 {
+    color: var(--color-purple-light, #8b5cf6);
+  }
+
+  .info-section p,
+  .info-section li {
+    color: var(--text-primary-dark, #e8e8e8);
+  }
+}

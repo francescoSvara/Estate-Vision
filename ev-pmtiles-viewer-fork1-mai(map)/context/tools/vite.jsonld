@@ -1,0 +1,19 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareApplication",
+  "@id": "./vite.jsonld",
+  "name": "Vite",
+  "description": "Fast build tool and development server for modern web projects",
+  "applicationCategory": "Build Tool",
+  "softwareVersion": "7.1.9+",
+  "isAccessibleForFree": true,
+  "url": "https://vitejs.dev/",
+  "featureList": [
+    "Lightning-fast HMR (Hot Module Replacement)",
+    "Optimized production builds",
+    "Built-in code splitting",
+    "Asset optimization",
+    "ES modules support"
+  ],
+  "usage": "buildTool"
+}

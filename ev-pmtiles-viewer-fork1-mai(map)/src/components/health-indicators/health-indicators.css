@@ -1,0 +1,52 @@
+.health-indicators {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.health-indicators .status-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.health-indicators .status-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: help;
+}
+
+.health-indicators .icon-db,
+.health-indicators .icon-api {
+  width: 14px;
+  height: 14px;
+  opacity: 0.8;
+  color: var(--text-comment, #666);
+  flex-shrink: 0;
+}
+
+.health-indicators .status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.health-indicators .status-indicator.checking {
+  background-color: var(--text-comment, #666);
+  opacity: 0.5;
+}
+
+.health-indicators .status-indicator.ok {
+  background-color: var(--color-green, #28a745);
+}
+
+.health-indicators .status-indicator.warning {
+  background-color: var(--color-orange, #fd7e14);
+}
+
+.health-indicators .status-indicator.error {
+  background-color: var(--color-red, #dc3545);
+}

@@ -1,0 +1,26 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareApplication",
+  "@id": "./tabulator.jsonld",
+  "name": "Tabulator Tables",
+  "description": "Interactive table and data grid library for JavaScript",
+  "applicationCategory": "JavaScript Library",
+  "softwareVersion": "6.3.1+",
+  "isAccessibleForFree": true,
+  "url": "https://tabulator.info/",
+  "featureList": [
+    "Responsive data tables (available for future use)",
+    "Sorting and filtering capabilities",
+    "Data export (CSV, JSON, Excel)",
+    "Virtual DOM rendering for performance",
+    "Customizable styling and themes"
+  ],
+  "usage": "tables",
+  "status": "available_not_implemented",
+  "potential_use_cases": [
+    "Municipality data table display",
+    "Parcel information tabular view",
+    "Search results presentation",
+    "Data export functionality"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "SoftwareApplication",
+  "@id": "./maplibre-gl.jsonld",
+  "name": "MapLibre GL JS",
+  "description": "Open-source library for interactive, customizable vector maps on the web",
+  "applicationCategory": "JavaScript Library",
+  "softwareVersion": "5.7.3+",
+  "isAccessibleForFree": true,
+  "url": "https://maplibre.org/",
+  "featureList": [
+    "Vector tile rendering",
+    "WebGL-based map rendering",
+    "Custom styling and theming",
+    "Interactive controls and events",
+    "Layer management",
+    "Popup and marker support"
+  ],
+  "usage": "mapping"
+}

@@ -1,0 +1,10 @@
+/* Language Switcher Component Styles */
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+}
+
+.language-select {
+  min-width: 60px;
+}
