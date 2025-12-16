@@ -1,8 +1,0 @@
-[
-  {
-    "origin": ["https://vm-neural-01.duckdns.org", "http://localhost:5173"],
-    "method": ["GET", "HEAD", "OPTIONS"],
-    "responseHeader": ["Content-Type", "Content-Range", "Content-Length", "Accept-Ranges"],
-    "maxAgeSeconds": 3600
-  }
-]
